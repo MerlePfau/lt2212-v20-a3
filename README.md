@@ -59,6 +59,8 @@ The number of hidden neurons should be less than twice the size of the input lay
 
 Since the number of features given to the NN is 2*50, so 100 I decided to test it on hidden layer sizes between 1 and 100, the output and input size.
 
+I used the weighted average of precision, recall and f1_score.
+
 Hidden layer size: 100
 
 no nonlinearity: accuracy: 0.8123 precision: 0.7250776866398734 recall: 0.8123 f1_score: 0.7573142486345905
@@ -94,3 +96,5 @@ Tanh():          accuracy: 0.8292 precision: 0.7733272661678666 recall: 0.8292 f
 ReLU():          accuracy: 0.8292 precision: 0.8519949445267464 recall: 0.8292 f1_score: 0.7568014139272686
 
 
+Overall, the differences between the different sizes of the hidden layer were not very big. The model performed slightly better at hidden size 70, followed by 100. Overall it seemed to favour the label 0 over 1, and during parts of the testing classified all testing samples as 0. Since the training data was sampled randomly, the distribution of the labels was overall heavy on negative samples, which is why even with only 0s it still performed with an accuracy of around 80%.
+Between the different activation functions, the model performed the worst whithout any nonlinearity. Tanh() and ReLU() improved the results by about the same.
