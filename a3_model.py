@@ -75,6 +75,8 @@ if __name__ == "__main__":
                         help="Size of the hiddenlayer.")
     parser.add_argument("--nonlin", "-L", dest="nonlinearity", type=str, default="",
                         help="Name of the nonlinearity.")
+    parser.add_argument("--out", "-O", dest="outputfile", type=str, default="",
+                        help="The name of the output file containing the plotted results.")
     # Add options here for part 3 -- hidden layer and nonlinearity,
     # and any other options you may think you want/need.  Document
     # everything.

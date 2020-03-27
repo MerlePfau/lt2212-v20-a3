@@ -71,3 +71,5 @@ class FFNNModel(nn.Module):
         print('accuracy:', accuracy, 'precision:', precision, 'recall:', recall, 'f1_score:', f)
         return accuracy, precision, recall, f
 
+
+
