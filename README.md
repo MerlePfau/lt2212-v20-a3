@@ -105,3 +105,4 @@ The overall best settings were size 100 and nonlin Tanh, followed by 20 and Tanh
 Between the different activation functions, the model performed the worst whithout any nonlinearity. 
 Tanh() and ReLU() improved the results by about the same, with Tanh() outperforming ReLU fo hidden sizes 100 and 20, and ReLU having better results for the sizes between.
 
+The results are overall quite bad, which could be due to the relativly small training sample and the quality of the data.
