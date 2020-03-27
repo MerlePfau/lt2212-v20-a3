@@ -40,15 +40,23 @@ def sample_data(size, df):
         return sample
 
     samples = []
-
-    for i in range(size):
+    counter1 = 0
+    counter0 = 0
+    while len(samples) <= size:
         index1 = random.choice(df.index)
         index2 = random.choice(df.index)
         while index1 == index2:
             index2 = random.choice(df.index)
         sample = compare_author(index1, index2)
-        samples.append(sample)
-        i += 1
+        if sample[1] == 1:
+            if counter1 <= size/2 + 1:
+                samples.append(sample)
+                counter1 += 1
+        else:
+            if counter0 <= size/2 + 1:
+                samples.append(sample)
+                counter0 += 1
+    random.shuffle(samples)
     return samples
 
 

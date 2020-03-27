@@ -27,20 +27,23 @@ Part 2:
 
 - There is an optional argument --size to determine the size of the training and testing sample batch. 
 
-For the sampling process I chose a random document d1 and another random document d2 (!=d1)to compare both for training and testing. This results in a completely random sample that should be representative the data.
+For the sampling process I chose a random document d1 and another random document d2 (!=d1)to compare both for training and testing. 
+I made sure to create a balanced test and training sample with ~50% positive and negative instances.
+When I had a competely random sampling procedure earlier, the model seemed to favour the label 0 over 1, and during parts of the testing classified all testing samples as 0. 
+Since the training data was sampled randomly, the distribution of the labels was overall heavy on negative samples, which is why even with only 0s it still performed with an accuracy of around 80%.
 
 I also chose to run the training for 3 epochs, which is defined in the training function of the model.
 
 
-Example run: python a3_model.py test.csv --size 10000
+Example run: python a3_model.py test.csv --size 1000
 
-With the values from the examples, I got these results on the first three runs:
+With the values from the examples (50 features, samplesize = 1000), I got these results on the first three runs:
 
-accuracy: 0.8064 precision: 0.740785727122339 recall: 0.8064 f1_score: 0.759421788931789
+accuracy: 0.5544455544455544 precision: 0.5763134406261381 recall: 0.5544455544455544 f1_score: 0.521571434091244
 
-accuracy: 0.5842 precision: 0.7275819825672893 recall: 0.5842 f1_score: 0.633369287661967
+accuracy: 0.5394605394605395 precision: 0.5495191737994183 recall: 0.5394605394605395 f1_score: 0.5166568835651731
 
-accuracy: 0.8026 precision: 0.7439299809898795 recall: 0.8026 f1_score: 0.7653767744045419
+accuracy: 0.5194805194805194 precision: 0.5640849762301565 recall: 0.5194805194805194 f1_score: 0.42190734995996054
 
 
 Part 3: 
@@ -49,7 +52,7 @@ Part 3:
 
 - there is an optional argument --nonlin to set the activation function. If not used, there is no nonlinear layer. You can use tanh or relu.
 
-Example run: python a3_model.py test.csv --size 10000 --hidden 100 --nonlin tanh
+Example run: python a3_model.py test.csv --size 1000 --hidden 100 --nonlin tanh
 
 
 According to https://stats.stackexchange.com/questions/181/how-to-choose-the-number-of-hidden-layers-and-nodes-in-a-feedforward-neural-netw:
@@ -59,42 +62,46 @@ The number of hidden neurons should be less than twice the size of the input lay
 
 Since the number of features given to the NN is 2*50, so 100 I decided to test it on hidden layer sizes between 1 and 100, the output and input size.
 
-I used the weighted average of precision, recall and f1_score.
-
 Hidden layer size: 100
 
-no nonlinearity: accuracy: 0.8123 precision: 0.7250776866398734 recall: 0.8123 f1_score: 0.7573142486345905
-Tanh():          accuracy: 0.8373 precision: 0.8379419980799674 recall: 0.8373 f1_score: 0.7690212477853432
-ReLU():          accuracy: 0.8334 precision: 0.8056928593095436 recall: 0.8334 f1_score: 0.7748548119084394
+no nonlinearity: accuracy: 0.5554445554445554 precision: 0.5641016973656224 recall: 0.5554445554445554 f1_score: 0.5410213688888286
+Tanh():          accuracy: 0.5754245754245755 precision: 0.5829398090680957 recall: 0.5754245754245755 f1_score: 0.5662655688489688
+ReLU():          accuracy: 0.5244755244755245 precision: 0.6111237599609693 recall: 0.5244755244755245 f1_score: 0.4068273908511657
 
 
 Hidden layer size: 70
 
-no nonlinearity: accuracy: 0.8249 precision: 0.7375652726902726 recall: 0.8249 f1_score: 0.7609413908365218
-Tanh():          accuracy: 0.8347 precision: 0.850703369715796  recall: 0.8347 f1_score: 0.7709296842751653
-ReLU():          accuracy: 0.8366 precision: 0.8484376306046896 recall: 0.8366 f1_score: 0.7673466268500948    
+no nonlinearity: accuracy: 0.4935064935064935 precision: 0.4934906783240635 recall: 0.4935064935064935 f1_score: 0.4934862729334837
+Tanh():          accuracy: 0.5154845154845155 precision: 0.5232693697799281 recall: 0.5154845154845155 f1_score: 0.4653097517879794
+ReLU():          accuracy: 0.5424575424575424 precision: 0.5452945386596116 recall: 0.5424575424575424 f1_score: 0.5361782121048123    
 
 
 Hidden layer size: 60
 
-no nonlinearity: accuracy: 0.7841 precision: 0.7290967835063027 recall: 0.7841 f1_score: 0.7515635424175974
-Tanh():          accuracy: 0.834  precision: 0.8430948008132806 recall: 0.834  f1_score: 0.7636022622221977
-ReLU():          accuracy: 0.8261 precision: 0.7177110545438425 recall: 0.8261 f1_score: 0.7528051273831365
+no nonlinearity: accuracy: 0.5014985014985015 precision: 0.5011210845786107 recall: 0.5014985014985015 f1_score: 0.48659703272693383
+Tanh():          accuracy: 0.5404595404595405 precision: 0.5530815859852496 recall: 0.5404595404595405 f1_score: 0.513312572325475
+ReLU():          accuracy: 0.5614385614385614 precision: 0.5713507271948831 recall: 0.5614385614385614 f1_score: 0.5445876226918674
 
 
 Hidden layer size: 50
 
-no nonlinearity: accuracy: 0.8208 precision: 0.7175989537223341 recall: 0.8208 f1_score: 0.7454818517425387
-Tanh():          accuracy: 0.832  precision: 0.692224           recall: 0.832  f1_score: 0.755703056768559     (only predicted 0s)
-ReLU():          accuracy: 0.8363 precision: 0.8449060287592167 recall: 0.8363 f1_score: 0.7626353829685977
-
+no nonlinearity: accuracy: 0.5264735264735265 precision: 0.5291428127249023 recall: 0.5264735264735265 f1_score: 0.5131599207927188
+Tanh():          accuracy: 0.5464535464535465 precision: 0.5469355368991067 recall: 0.5464535464535465 f1_score: 0.5456356103908886
+ReLU():          accuracy: 0.5494505494505495 precision: 0.5507922419729124 recall: 0.5494505494505495 f1_score: 0.5470098135552275
 
 Hidden layer size: 20
 
-no nonlinearity: accuracy: 0.7621 precision: 0.7325533988743431 recall: 0.7621 f1_score: 0.7457393186181555
-Tanh():          accuracy: 0.8292 precision: 0.7733272661678666 recall: 0.8292 f1_score: 0.7774647786847196
-ReLU():          accuracy: 0.8292 precision: 0.8519949445267464 recall: 0.8292 f1_score: 0.7568014139272686
+no nonlinearity: accuracy: 0.4995004995004995 precision: 0.5006822616156736 recall: 0.4995004995004995 f1_score: 0.44740224629806463
+Tanh():          accuracy: 0.5634365634365635 precision: 0.5638400848804334 recall: 0.5634365634365635 f1_score: 0.5629480896265249
+ReLU():          accuracy: 0.5324675324675324 precision: 0.540616027329314  recall: 0.5324675324675324 f1_score: 0.5099821527538768
 
 
-Overall, the differences between the different sizes of the hidden layer were not very big. The model performed slightly better at hidden size 70, followed by 100. Overall it seemed to favour the label 0 over 1, and during parts of the testing classified all testing samples as 0. Since the training data was sampled randomly, the distribution of the labels was overall heavy on negative samples, which is why even with only 0s it still performed with an accuracy of around 80%.
-Between the different activation functions, the model performed the worst whithout any nonlinearity. Tanh() and ReLU() improved the results by about the same.
+Overall, the differences between the different sizes of the hidden layer were not very big. The model performed slightly better at hidden size 100 than at the rest.
+The worst is 70, which is closest to the recommendation of "2/3 the size of the input layer, plus the size of the output layer".
+At the smallest tested value 20, the performance increased again to almost the results of 100.
+
+The overall best settings were size 100 and nonlin Tanh, followed by 20 and Tanh.
+
+Between the different activation functions, the model performed the worst whithout any nonlinearity. 
+Tanh() and ReLU() improved the results by about the same, with Tanh() outperforming ReLU fo hidden sizes 100 and 20, and ReLU having better results for the sizes between.
+
