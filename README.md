@@ -26,6 +26,7 @@ Part 2:
 - Add the filename of the file you created in part 1 as an argument.
 
 - There is an optional argument --size to determine the size of the training and testing sample batch. (default 100)
+This way, with smaller samples, I was able to test the model on lots of different settings in a shorter period of time.
 
 For the sampling process I chose a random document d1 and another random document d2 (!=d1)to compare both for training and testing. 
 I made sure to create a balanced test and training sample with ~50% positive and negative instances.
@@ -119,5 +120,5 @@ Example run: python a3_model_2.py test.csv --size 10000 --nonlin tanh --out plot
 I uploaded the plot from this example to my github repo.
 
 I chose to test the hidden layer sizes 0, 10, 20, 30, 40, 50, 60, 70, 80, 90 and 100, similarly to part 3.
-For the plot, I sorted the results after the result. Unfortunately I did not manage to include the respective hidden layer sizes in the graph,
+For the plot, I sorted the results after the recall. Unfortunately I did not manage to include the respective hidden layer sizes in the graph,
 so that the connection between each point on the line and the size in not visible in the graph.
