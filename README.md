@@ -25,7 +25,7 @@ Part 2:
 
 - Add the filename of the file you created in part 1 as an argument.
 
-- There is an optional argument --size to determine the size of the training and testing sample batch. 
+- There is an optional argument --size to determine the size of the training and testing sample batch. (default 100)
 
 For the sampling process I chose a random document d1 and another random document d2 (!=d1)to compare both for training and testing. 
 I made sure to create a balanced test and training sample with ~50% positive and negative instances.
