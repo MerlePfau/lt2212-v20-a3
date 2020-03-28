@@ -34,16 +34,18 @@ Since the training data was sampled randomly, the distribution of the labels was
 
 I also chose to run the training for 3 epochs, which is defined in the training function of the model.
 
+To caluculate the loss, I chose to use BCELoss(), since it is a binary classification.
 
-Example run: python a3_model.py test.csv --size 1000
 
-With the values from the examples (50 features, samplesize = 1000), I got these results on the first three runs:
+Example run: python a3_model.py test.csv --size 10000
 
-accuracy: 0.5544455544455544 precision: 0.5763134406261381 recall: 0.5544455544455544 f1_score: 0.521571434091244
+With the values from the examples (50 features, samplesize = 10000), I got these results on the first three runs:
 
-accuracy: 0.5394605394605395 precision: 0.5495191737994183 recall: 0.5394605394605395 f1_score: 0.5166568835651731
+accuracy: 0.5562443755624438 precision: 0.5616341093332067 recall: 0.5562443755624438 f1_score: 0.5462326100964033
 
-accuracy: 0.5194805194805194 precision: 0.5640849762301565 recall: 0.5194805194805194 f1_score: 0.42190734995996054
+accuracy: 0.5758424157584242 precision: 0.580107951876013 recall: 0.5758424157584242 f1_score: 0.5701741263322165
+
+accuracy: 0.5241475852414759 precision: 0.531645608049904 recall: 0.5241475852414759 f1_score: 0.4938569345467199
 
 
 Part 3: 
@@ -64,45 +66,58 @@ Since the number of features given to the NN is 2*50, so 100 I decided to test i
 
 Hidden layer size: 100
 
-no nonlinearity: accuracy: 0.5554445554445554 precision: 0.5641016973656224 recall: 0.5554445554445554 f1_score: 0.5410213688888286
-Tanh():          accuracy: 0.5754245754245755 precision: 0.5829398090680957 recall: 0.5754245754245755 f1_score: 0.5662655688489688
-ReLU():          accuracy: 0.5244755244755245 precision: 0.6111237599609693 recall: 0.5244755244755245 f1_score: 0.4068273908511657
+no nonlinearity: accuracy: 0.506049395060494 precision: 0.5313719101100688 recall: 0.506049395060494 f1_score: 0.38203517904426276
+Tanh():          accuracy: 0.7502249775022498 precision: 0.7502572023508456 recall: 0.7502249775022498 f1_score: 0.7502175654538614
+ReLU():          accuracy: 0.7283271672832716 precision: 0.7343890168817426 recall: 0.7283271672832716 f1_score: 0.7265488441610882
 
 
-Hidden layer size: 70
+Hidden layer size: 80
 
-no nonlinearity: accuracy: 0.4935064935064935 precision: 0.4934906783240635 recall: 0.4935064935064935 f1_score: 0.4934862729334837
-Tanh():          accuracy: 0.5154845154845155 precision: 0.5232693697799281 recall: 0.5154845154845155 f1_score: 0.4653097517879794
-ReLU():          accuracy: 0.5424575424575424 precision: 0.5452945386596116 recall: 0.5424575424575424 f1_score: 0.5361782121048123    
+no nonlinearity: accuracy: 0.5212478752124787 precision: 0.5403333740157472 recall: 0.5212478752124787 f1_score: 0.45659396849809136
+Tanh():          accuracy: 0.6765323467653235 precision: 0.7119493707367333 recall: 0.6765323467653235 f1_score: 0.6623948624684826
+ReLU():          accuracy: 0.6504349565043496 precision: 0.6586277666015621 recall: 0.6504349565043496 f1_score: 0.6458370617384518   
 
 
 Hidden layer size: 60
 
-no nonlinearity: accuracy: 0.5014985014985015 precision: 0.5011210845786107 recall: 0.5014985014985015 f1_score: 0.48659703272693383
-Tanh():          accuracy: 0.5404595404595405 precision: 0.5530815859852496 recall: 0.5404595404595405 f1_score: 0.513312572325475
-ReLU():          accuracy: 0.5614385614385614 precision: 0.5713507271948831 recall: 0.5614385614385614 f1_score: 0.5445876226918674
+no nonlinearity: accuracy: 0.5032496750324967 precision: 0.5037881514062184 recall: 0.5032496750324967 f1_score: 0.4828232641570284
+Tanh():          accuracy: 0.6857314268573143 precision: 0.7015758178406429 recall: 0.6857314268573143 f1_score: 0.6794083767577425
+ReLU():          accuracy: 0.5912408759124088 precision: 0.6277789217368286 recall: 0.5912408759124088 f1_score: 0.5598608414455218
 
 
-Hidden layer size: 50
+Hidden layer size: 40
 
-no nonlinearity: accuracy: 0.5264735264735265 precision: 0.5291428127249023 recall: 0.5264735264735265 f1_score: 0.5131599207927188
-Tanh():          accuracy: 0.5464535464535465 precision: 0.5469355368991067 recall: 0.5464535464535465 f1_score: 0.5456356103908886
-ReLU():          accuracy: 0.5494505494505495 precision: 0.5507922419729124 recall: 0.5494505494505495 f1_score: 0.5470098135552275
+no nonlinearity: accuracy: 0.49695030496950304 precision: 0.4958721914414103 recall: 0.49695030496950304 f1_score: 0.4590439092051328
+Tanh():          accuracy: 0.6432356764323568  precision: 0.6685948286928081 recall: 0.6432356764323568  f1_score: 0.6293393779874773
+ReLU():          accuracy: 0.7156284371562843  precision: 0.7195589358992553 recall: 0.7156284371562843  f1_score: 0.7143406019430337
 
 Hidden layer size: 20
 
-no nonlinearity: accuracy: 0.4995004995004995 precision: 0.5006822616156736 recall: 0.4995004995004995 f1_score: 0.44740224629806463
-Tanh():          accuracy: 0.5634365634365635 precision: 0.5638400848804334 recall: 0.5634365634365635 f1_score: 0.5629480896265249
-ReLU():          accuracy: 0.5324675324675324 precision: 0.540616027329314  recall: 0.5324675324675324 f1_score: 0.5099821527538768
+no nonlinearity: accuracy: 0.5236476352364764 precision: 0.5311904940519587 recall: 0.5236476352364764 f1_score: 0.4933298929767751
+Tanh():          accuracy: 0.6913308669133087 precision: 0.6922934923153071 recall: 0.6913308669133087 f1_score: 0.6909381545425872
+ReLU():          accuracy: 0.5768423157684232 precision: 0.630598969153266 recall: 0.5768423157684232 f1_score: 0.5281857050877707
 
 
-Overall, the differences between the different sizes of the hidden layer were not very big. The model performed slightly better at hidden size 100 than at the rest.
-The worst is 70, which is closest to the recommendation of "2/3 the size of the input layer, plus the size of the output layer".
-At the smallest tested value 20, the performance increased again to almost the results of 100.
+Overall, between the different activation functions, the model performed by far the worst whithout any nonlinearity, consistently over all the sizes.
 
-The overall best settings were size 100 and nonlin Tanh, followed by 20 and Tanh.
+The model performed the best at hidden size 100 for both Tanh() and ReLU() as the activation functions with f1 scores of 75 and 72%.
 
-Between the different activation functions, the model performed the worst whithout any nonlinearity. 
-Tanh() and ReLU() improved the results by about the same, with Tanh() outperforming ReLU fo hidden sizes 100 and 20, and ReLU having better results for the sizes between.
+For Tanh() the results got worse with smaller hidden layers, while ReLu() performed really well with a hidden layer with 40 neurons (71%).
 
-The results are overall quite bad, which could be due to the relativly small training sample and the quality of the data.
+
+
+Part Bonus:
+
+- To plot the precision-recall curve, call the file a3_model_2.py.
+
+- As the output file you write the name and extension of your output file (e.g. plot.png) to the optional argument --out if you run it from the assignment directory.
+
+- You can still use the --nonlin argument from part3.
+
+Example run: python a3_model_2.py test.csv --size 10000 --nonlin tanh --out plot.png
+
+I uploaded the plot from this example to my github repo.
+
+I chose to test the hidden layer sizes 0, 10, 20, 30, 40, 50, 60, 70, 80, 90 and 100, similarly to part 3.
+For the plot, I sorted the results after the result. Unfortunately I did not manage to include the respective hidden layer sizes in the graph,
+so that the connection between each point on the line and the size in not visible in the graph.
